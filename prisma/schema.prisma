@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id        Int     @id @default(autoincrement())
+  descricao String
+  concluida Boolean @default(false)
+  criadaEm  DateTime @default(now())
+
+  @@map("tasks")
+}
+
+model Anime {
+  id          Int     @id @default(autoincrement())
+  title       String  
+  description String?
+  episodes    Int
+  releaseYear Int
+  studio      String
+  genres      String
+  rating      Float
+  imageUrl    String
+  createdAt   DateTime
+  updatedAt   DateTime
+
+  @@map("animes")
+}
